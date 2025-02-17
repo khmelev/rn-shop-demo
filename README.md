@@ -11,3 +11,28 @@ This repo showcases reference implementation of Callstack's modern brownfield ap
 
 1. Start with RN old architecture setup (`old-arch` branch)
 2. Move to new architecture setup (`main` branch)
+
+## Building
+
+### iOS Framework
+
+Follow these steps to build the app as `.xcframework`:
+
+1. Install dependencies 
+```sh
+pnpm install
+```
+2. Install pods
+```sh
+pnpm pods
+```
+3. Build the app
+```sh
+pnpm build
+```
+or 
+```sh
+pnpm build:release
+```
+
+`ReactBrownfield.xcframework` will be generated in `ios` directory

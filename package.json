@@ -5,9 +5,12 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
+    "pods": "cd ios && bundle install && bundle exec pod install",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "brownfield:ios": "./scripts/build_xcframework.sh",
+    "brownfield:ios:release": "./scripts/build_xcframework.sh --release"
   },
   "dependencies": {
     "react": "18.3.1",

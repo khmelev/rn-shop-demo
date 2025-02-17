@@ -9,10 +9,39 @@
 /* Begin PBXBuildFile section */
 		0C80B921A6F3F58F76C31292 /* libPods-BrownfieldRef.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-BrownfieldRef.a */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		331D0F962F391A0319AF6957 /* libPods-BrownfieldRef-ReactBrownfield.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F55934D46A7471CAFBDDE7F /* libPods-BrownfieldRef-ReactBrownfield.a */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		B3272CA5FEDC6024A6C9D12A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
+		E7C97A922D5E2E1700023AFB /* ReactBrownfield.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7C97A8C2D5E2E1700023AFB /* ReactBrownfield.framework */; };
+		E7C97A932D5E2E1700023AFB /* ReactBrownfield.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E7C97A8C2D5E2E1700023AFB /* ReactBrownfield.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E7C97A9B2D5E2E2600023AFB /* ReactBrownfield.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C97A992D5E2E2600023AFB /* ReactBrownfield.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7C97ABD2D5F60A500023AFB /* ReactBrownfieldRootViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C97ABC2D5F60A500023AFB /* ReactBrownfieldRootViewManager.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E7C97A902D5E2E1700023AFB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E7C97A8B2D5E2E1700023AFB;
+			remoteInfo = ReactBrownfield;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E7C97A942D5E2E1700023AFB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E7C97A932D5E2E1700023AFB /* ReactBrownfield.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		13B07F961A680F5B00A75B9A /* BrownfieldRef.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrownfieldRef.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -20,11 +49,17 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = BrownfieldRef/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = BrownfieldRef/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-BrownfieldRef.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrownfieldRef.debug.xcconfig"; path = "Target Support Files/Pods-BrownfieldRef/Pods-BrownfieldRef.debug.xcconfig"; sourceTree = "<group>"; };
+		4F55934D46A7471CAFBDDE7F /* libPods-BrownfieldRef-ReactBrownfield.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BrownfieldRef-ReactBrownfield.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5709B34CF0A7D63546082F79 /* Pods-BrownfieldRef.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrownfieldRef.release.xcconfig"; path = "Target Support Files/Pods-BrownfieldRef/Pods-BrownfieldRef.release.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-BrownfieldRef.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BrownfieldRef.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = BrownfieldRef/AppDelegate.swift; sourceTree = "<group>"; };
+		797B50C3BB8DB82AD994E45D /* Pods-BrownfieldRef-ReactBrownfield.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrownfieldRef-ReactBrownfield.release.xcconfig"; path = "Target Support Files/Pods-BrownfieldRef-ReactBrownfield/Pods-BrownfieldRef-ReactBrownfield.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = BrownfieldRef/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E7C97A8C2D5E2E1700023AFB /* ReactBrownfield.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReactBrownfield.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7C97A992D5E2E2600023AFB /* ReactBrownfield.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReactBrownfield.h; sourceTree = "<group>"; };
+		E7C97ABC2D5F60A500023AFB /* ReactBrownfieldRootViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactBrownfieldRootViewManager.swift; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F911D989DAC9BE549544185D /* Pods-BrownfieldRef-ReactBrownfield.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrownfieldRef-ReactBrownfield.debug.xcconfig"; path = "Target Support Files/Pods-BrownfieldRef-ReactBrownfield/Pods-BrownfieldRef-ReactBrownfield.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,7 +67,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7C97A922D5E2E1700023AFB /* ReactBrownfield.framework in Frameworks */,
 				0C80B921A6F3F58F76C31292 /* libPods-BrownfieldRef.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7C97A892D5E2E1700023AFB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				331D0F962F391A0319AF6957 /* libPods-BrownfieldRef-ReactBrownfield.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +100,7 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				5DCACB8F33CDC322A6C60F78 /* libPods-BrownfieldRef.a */,
+				4F55934D46A7471CAFBDDE7F /* libPods-BrownfieldRef-ReactBrownfield.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -72,6 +117,7 @@
 			children = (
 				13B07FAE1A68108700A75B9A /* BrownfieldRef */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
+				E7C97A9A2D5E2E2600023AFB /* ReactBrownfield */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
@@ -85,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				13B07F961A680F5B00A75B9A /* BrownfieldRef.app */,
+				E7C97A8C2D5E2E1700023AFB /* ReactBrownfield.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -94,11 +141,33 @@
 			children = (
 				3B4392A12AC88292D35C810B /* Pods-BrownfieldRef.debug.xcconfig */,
 				5709B34CF0A7D63546082F79 /* Pods-BrownfieldRef.release.xcconfig */,
+				F911D989DAC9BE549544185D /* Pods-BrownfieldRef-ReactBrownfield.debug.xcconfig */,
+				797B50C3BB8DB82AD994E45D /* Pods-BrownfieldRef-ReactBrownfield.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E7C97A9A2D5E2E2600023AFB /* ReactBrownfield */ = {
+			isa = PBXGroup;
+			children = (
+				E7C97A992D5E2E2600023AFB /* ReactBrownfield.h */,
+				E7C97ABC2D5F60A500023AFB /* ReactBrownfieldRootViewManager.swift */,
+			);
+			path = ReactBrownfield;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		E7C97A872D5E2E1700023AFB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7C97A9B2D5E2E2600023AFB /* ReactBrownfield.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		13B07F861A680F5B00A75B9A /* BrownfieldRef */ = {
@@ -112,15 +181,38 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
 				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				E7C97A942D5E2E1700023AFB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E7C97A912D5E2E1700023AFB /* PBXTargetDependency */,
 			);
 			name = BrownfieldRef;
 			productName = BrownfieldRef;
 			productReference = 13B07F961A680F5B00A75B9A /* BrownfieldRef.app */;
 			productType = "com.apple.product-type.application";
+		};
+		E7C97A8B2D5E2E1700023AFB /* ReactBrownfield */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E7C97A982D5E2E1700023AFB /* Build configuration list for PBXNativeTarget "ReactBrownfield" */;
+			buildPhases = (
+				2732A3BED3E154EB45FADFA4 /* [CP] Check Pods Manifest.lock */,
+				E7C97A872D5E2E1700023AFB /* Headers */,
+				E7C97A882D5E2E1700023AFB /* Sources */,
+				E7C97A892D5E2E1700023AFB /* Frameworks */,
+				E7C97A8A2D5E2E1700023AFB /* Resources */,
+				E7C97A9C2D5E2EA600023AFB /* Bundle React Native code and images */,
+				BC0F140F1BFE190B5F55BEA5 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReactBrownfield;
+			productName = ReactBrownfield;
+			productReference = E7C97A8C2D5E2E1700023AFB /* ReactBrownfield.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -132,6 +224,10 @@
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
 						LastSwiftMigration = 1120;
+					};
+					E7C97A8B2D5E2E1700023AFB = {
+						CreatedOnToolsVersion = 16.2;
+						LastSwiftMigration = 1620;
 					};
 				};
 			};
@@ -149,6 +245,7 @@
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* BrownfieldRef */,
+				E7C97A8B2D5E2E1700023AFB /* ReactBrownfield */,
 			);
 		};
 /* End PBXProject section */
@@ -161,6 +258,13 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				B3272CA5FEDC6024A6C9D12A /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7C97A8A2D5E2E1700023AFB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +302,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BrownfieldRef/Pods-BrownfieldRef-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2732A3BED3E154EB45FADFA4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BrownfieldRef-ReactBrownfield-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BC0F140F1BFE190B5F55BEA5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BrownfieldRef-ReactBrownfield/Pods-BrownfieldRef-ReactBrownfield-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BrownfieldRef-ReactBrownfield/Pods-BrownfieldRef-ReactBrownfield-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BrownfieldRef-ReactBrownfield/Pods-BrownfieldRef-ReactBrownfield-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
@@ -239,6 +382,26 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BrownfieldRef/Pods-BrownfieldRef-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E7C97A9C2D5E2EA600023AFB /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/.xcode.env.local",
+				"$(SRCROOT)/.xcode.env",
+			);
+			name = "Bundle React Native code and images";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"$REACT_NATIVE_PATH/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -250,7 +413,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E7C97A882D5E2E1700023AFB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7C97ABD2D5F60A500023AFB /* ReactBrownfieldRootViewManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E7C97A912D5E2E1700023AFB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E7C97A8B2D5E2E1700023AFB /* ReactBrownfield */;
+			targetProxy = E7C97A902D5E2E1700023AFB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
@@ -459,6 +638,113 @@
 			};
 			name = Release;
 		};
+		E7C97A952D5E2E1700023AFB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F911D989DAC9BE549544185D /* Pods-BrownfieldRef-ReactBrownfield.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.ReactBrownfield;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E7C97A962D5E2E1700023AFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 797B50C3BB8DB82AD994E45D /* Pods-BrownfieldRef-ReactBrownfield.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.ReactBrownfield;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -476,6 +762,15 @@
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
 				83CBBA211A601CBA00E9B192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E7C97A982D5E2E1700023AFB /* Build configuration list for PBXNativeTarget "ReactBrownfield" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7C97A952D5E2E1700023AFB /* Debug */,
+				E7C97A962D5E2E1700023AFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
