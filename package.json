@@ -9,8 +9,9 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
-    "brownfield:ios": "./scripts/build_xcframework.sh",
-    "brownfield:ios:release": "./scripts/build_xcframework.sh --release"
+    "brownfield:ios": "./scripts/build-xcframework.sh",
+    "brownfield:ios:release": "./scripts/build-xcframework.sh --release",
+    "brownfield:android": "./scripts/build-aar.sh"
   },
   "dependencies": {
     "react": "18.3.1",

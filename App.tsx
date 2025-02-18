@@ -62,6 +62,9 @@ function App(): React.JSX.Element {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+  // @ts-expect-error
+  const isNewArchitecture = global.__turboModuleProxy != null;
+
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar
@@ -72,6 +75,11 @@ function App(): React.JSX.Element {
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         <Header />
+
+        <Text style={styles.details}>
+          {isNewArchitecture ? 'New Arch' : 'Old Arch'}
+        </Text>
+
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
@@ -109,6 +117,11 @@ const styles = StyleSheet.create({
     marginTop: 8,
     fontSize: 18,
     fontWeight: '400',
+  },
+  details: {
+    textAlign: 'right',
+    marginHorizontal: 16,
+    marginVertical: 8,
   },
   highlight: {
     fontWeight: '700',

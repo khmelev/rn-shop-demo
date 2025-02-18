@@ -9,12 +9,23 @@ buildscript {
     }
     repositories {
         google()
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/callstack/big-fat-aar")
+            credentials {
+                def localProperties = new Properties()
+                file("local.properties").withInputStream { localProperties.load(it) }
+                username = localProperties.getProperty("github_username")
+                password = localProperties.getProperty("github_token")
+            }
+        }
         mavenCentral()
     }
     dependencies {
         classpath("com.android.tools.build:gradle")
         classpath("com.facebook.react:react-native-gradle-plugin")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
+        classpath("org.bigfataar:plugin:0.0.3")
     }
 }
 

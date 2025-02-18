@@ -1,0 +1,24 @@
+package com.callstack.react
+
+import android.content.Context
+import android.os.Bundle
+import android.widget.FrameLayout
+import com.facebook.react.ReactInstanceManager
+import com.facebook.react.ReactRootView
+
+object RNViewFactory {
+    fun createFrameLayout(
+        context: Context,
+        params: Bundle? = null,
+    ): FrameLayout {
+        val reactView = ReactRootView(context)
+        val reactNativeHost = RNBridgeManager.shared.getReactNativeHost()
+        val instanceManager: ReactInstanceManager? = reactNativeHost?.reactInstanceManager
+        reactView.startReactApplication(
+            instanceManager,
+            "BrownfieldRef",
+            params,
+        )
+        return reactView
+    }
+}
