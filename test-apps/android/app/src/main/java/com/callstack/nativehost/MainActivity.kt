@@ -9,15 +9,16 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.callstack.nativehost.databinding.ActivityMainBinding
 import com.callstack.react.RNBridgeManager
+import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), DefaultHardwareBackBtnHandler {
 
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        RNBridgeManager.shared.initialize(this.application)
+        RNBridgeManager.shared.initializeReactApp(this.application)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -34,5 +35,9 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    override fun invokeDefaultOnBackPressed() {
+        super.onBackPressed()
     }
 }

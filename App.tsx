@@ -63,7 +63,7 @@ function App(): React.JSX.Element {
   };
 
   // @ts-expect-error
-  const isNewArchitecture = global.__turboModuleProxy != null;
+  const isBridgeless = 'RN$Bridgeless' in global && RN$Bridgeless === true;
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -77,7 +77,7 @@ function App(): React.JSX.Element {
         <Header />
 
         <Text style={styles.details}>
-          {isNewArchitecture ? 'New Arch' : 'Old Arch'}
+          {isBridgeless ? 'Bridgeless' : 'Bridge'}
         </Text>
 
         <View

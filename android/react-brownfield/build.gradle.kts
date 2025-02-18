@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("com.facebook.react")
     id("org.bigfataar.plugin")
     `maven-publish`
 }
@@ -39,6 +40,7 @@ android {
             assets.srcDirs("$appBuildDir/generated/assets/createBundleReleaseJsAndAssets")
             res.srcDirs("$appBuildDir/generated/res/createBundleReleaseJsAndAssets")
             java.srcDirs("$moduleBuildDir/$autolinkingJavaSources")
+            jniLibs.srcDirs("libs")
         }
     }
 }
@@ -84,8 +86,19 @@ tasks.register<Copy>("copyAutolinkingSources") {
     into("$moduleBuildDir/$autolinkingJavaSources")
 }
 
+tasks.register<Copy>("copyLibSources") {
+    dependsOn(":app:generateCodegenSchemaFromJavaScript")
+    dependsOn(":app:stripReleaseDebugSymbols")
+    dependsOn(":react-brownfield:generateCodegenSchemaFromJavaScript")
+    from("${appBuildDir}/intermediates/stripped_native_libs/release/stripReleaseDebugSymbols/out/lib")
+    into("${rootProject.projectDir}/react-brownfield/libs")
+    include("**/libappmodules.so", "**/libreact_codegen_rnscreens.so", "**/libreact_codegen_safeareacontext.so")
+}
+
 tasks.named("preBuild").configure{
     dependsOn("copyAutolinkingSources")
+    dependsOn("copyLibSources")
+    
     val buildType = when {
         gradle.startParameter.taskNames.any { it.contains("Release", ignoreCase = true) } -> "Release"
         else -> "Debug"
