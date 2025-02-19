@@ -82,8 +82,8 @@ publishing {
 }
 
 dependencies {
-    api("com.facebook.react:react-android:0.78.0-rc.5")
-    api("com.facebook.react:hermes-android:0.78.0-rc.5")
+    api("com.facebook.react:react-android:0.78.0")
+    api("com.facebook.react:hermes-android:0.78.0")
 }
 
 tasks.register<Copy>("copyAutolinkingSources") {
