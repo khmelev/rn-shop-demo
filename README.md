@@ -12,6 +12,13 @@ This repo showcases reference implementation of Callstack's modern brownfield ap
 1. Start with RN old architecture setup (`old-arch` branch)
 2. Move to new architecture setup (`main` branch)
 
+## Supported things
+
+| Feature           | iOS     | Android |
+| ----------------- | ------- | ------- |
+| React Native      | 0.78    | 0.78    |
+| React Native arch | new+old | new+old |
+
 ## Building
 
 ### iOS Framework

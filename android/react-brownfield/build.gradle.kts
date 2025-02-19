@@ -45,13 +45,19 @@ android {
     }
 }
 
+fun getBuildType() =
+    when(System.getenv("BUILD_TYPE")) {
+        "Release" -> "release"
+        else -> "debug"
+    }
+
 publishing {
     publications {
         create<MavenPublication>("react-brownfield") {
             groupId = "com.callstack.react"
             artifactId = "react-brownfield"
             version = "0.0.1-local"
-            artifact("$moduleBuildDir/outputs/aar/react-brownfield-debug.aar")
+            artifact("$moduleBuildDir/outputs/aar/react-brownfield-${getBuildType()}.aar")
 
             pom {
                 withXml {
@@ -76,8 +82,8 @@ publishing {
 }
 
 dependencies {
-    api("com.facebook.react:react-android:0.77.0")
-    api("com.facebook.react:hermes-android:0.77.0")
+    api("com.facebook.react:react-android:0.78.0-rc.5")
+    api("com.facebook.react:hermes-android:0.78.0-rc.5")
 }
 
 tasks.register<Copy>("copyAutolinkingSources") {

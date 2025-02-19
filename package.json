@@ -11,7 +11,8 @@
     "test": "jest",
     "brownfield:ios": "./scripts/build-xcframework.sh",
     "brownfield:ios:release": "./scripts/build-xcframework.sh --release",
-    "brownfield:android": "./scripts/build-aar.sh"
+    "brownfield:android": "./scripts/build-aar.sh",
+    "brownfield:android:release": "./scripts/build-aar.sh --release"
   },
   "dependencies": {
     "react": "19.0.0",
