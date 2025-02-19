@@ -6,8 +6,8 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     do {
-      view = try ReactBrownfieldRootViewManager().loadView(
-        moduleName: "BrownfieldRef",
+      view = ReactBrownfieldRootViewManager.shared.loadView(
+        moduleName: "main",
         initialProps: nil,
         launchOptions: nil
       )

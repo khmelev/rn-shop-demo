@@ -1,26 +1,18 @@
 internal import React
 internal import React_RCTAppDelegate
+internal import ReactAppDependencyProvider
+
 import UIKit
 
-public enum ReactNativeManagerError: Error {
-    case javaScriptBundleNotFound
-}
-
-/// The main entry point for loading React Native views
 public class ReactBrownfieldRootViewManager {
-    private let rootViewFactory: RCTRootViewFactory
-
-    public init() throws(ReactNativeManagerError) {
-        guard let jsBundleURL = Self.getJavaScriptBundleURL() else {
-            throw .javaScriptBundleNotFound
-        }
-
-        let rootViewFactoryConfiguration = RCTRootViewFactoryConfiguration(
-            bundleURL: jsBundleURL,
-            newArchEnabled: RCTIsNewArchEnabled()
-        )
-
-        rootViewFactory = RCTRootViewFactory(configuration: rootViewFactoryConfiguration)
+    public static let shared = ReactBrownfieldRootViewManager()
+    var reactNativeFactory: RCTReactNativeFactory?
+    var reactNativeDelegate: RCTReactNativeFactoryDelegate?
+  
+    private init() {
+      reactNativeDelegate = ReactNativeDelegate()
+      reactNativeDelegate?.dependencyProvider = RCTAppDependencyProvider()
+      reactNativeFactory = RCTReactNativeFactory(delegate: reactNativeDelegate!)
     }
 
     /// Loads a React Native view with the given module name.
@@ -33,22 +25,23 @@ public class ReactBrownfieldRootViewManager {
         moduleName: String, initialProps: [AnyHashable: Any]?,
         launchOptions: [AnyHashable: Any]?
     ) -> UIView {
-        rootViewFactory.view(
+        reactNativeFactory!.rootViewFactory.view(
             withModuleName: moduleName, initialProperties: initialProps,
             launchOptions: launchOptions
         )
     }
 }
 
-extension ReactBrownfieldRootViewManager {
-    private static func getJavaScriptBundleURL() -> URL? {
+class ReactNativeDelegate: RCTDefaultReactNativeFactoryDelegate {
+    override func sourceURL(for bridge: RCTBridge) -> URL? {
+      return self.bundleURL()
+    }
+
+    override func bundleURL() -> URL? {
         #if DEBUG
-            // Get the JavaScript bundle from the packager.
-            // Fallback to offline JS bundle if the packager is not running.
             RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index")
         #else
-            // Get the JavaScript bundle from the current framework bundle.
-            Bundle(for: Self.self).url(forResource: "main", withExtension: "jsbundle")!
+            Bundle(for: Self.self).url(forResource: "main", withExtension: "jsbundle")
         #endif
     }
 }
