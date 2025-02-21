@@ -33,13 +33,13 @@ pnpm install
 ```sh
 pnpm pods
 ```
-3. Build the app
+3. Build the app as framework
 ```sh
-pnpm build
+pnpm brownfield:ios
 ```
 or 
 ```sh
-pnpm build:release
+pnpm brownfield:ios:release
 ```
 
 `ReactBrownfield.xcframework` will be generated in `ios` directory
