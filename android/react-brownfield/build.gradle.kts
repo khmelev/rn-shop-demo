@@ -96,9 +96,12 @@ tasks.register<Copy>("copyLibSources") {
     dependsOn(":app:generateCodegenSchemaFromJavaScript")
     dependsOn(":app:stripReleaseDebugSymbols")
     dependsOn(":react-brownfield:generateCodegenSchemaFromJavaScript")
+    
     from("${appBuildDir}/intermediates/stripped_native_libs/release/stripReleaseDebugSymbols/out/lib")
     into("${rootProject.projectDir}/react-brownfield/libs")
-    include("**/libappmodules.so", "**/libreact_codegen_rnscreens.so", "**/libreact_codegen_safeareacontext.so")
+
+    // Copy codegen SO lib files.
+    include("**/libappmodules.so", "**/libreact_codegen_*.so")
 }
 
 tasks.named("preBuild").configure{
