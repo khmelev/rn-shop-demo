@@ -1,8 +1,11 @@
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("com.facebook.react")
-    id("org.bigfataar.plugin")
+    id("com.callstack.react.brownfield")
     `maven-publish`
 }
 
@@ -40,16 +43,26 @@ android {
             assets.srcDirs("$appBuildDir/generated/assets/createBundleReleaseJsAndAssets")
             res.srcDirs("$appBuildDir/generated/res/createBundleReleaseJsAndAssets")
             java.srcDirs("$moduleBuildDir/$autolinkingJavaSources")
-            jniLibs.srcDirs("libs")
+        }
+        getByName("release") {
+            jniLibs.srcDirs("libsRelease")
+        }
+        getByName("debug") {
+            jniLibs.srcDirs("libsDebug")
+        }
+    }
+
+    publishing {
+        multipleVariants {
+            allVariants()
         }
     }
 }
 
-fun getBuildType() =
-    when(System.getenv("BUILD_TYPE")) {
-        "Release" -> "release"
-        else -> "debug"
-    }
+react {
+    autolinkLibrariesWithApp()
+}
+
 
 publishing {
     publications {
@@ -57,20 +70,19 @@ publishing {
             groupId = "com.callstack.react"
             artifactId = "react-brownfield"
             version = "0.0.1-local"
-            artifact("$moduleBuildDir/outputs/aar/react-brownfield-${getBuildType()}.aar")
+            afterEvaluate {
+                from(components.getByName("default"))
+            }
 
             pom {
                 withXml {
-                    asNode().appendNode("dependencies").apply {
-                        configurations.getByName("api").allDependencies.forEach { dependency ->
-                            appendNode("dependency").apply {
-                                appendNode("groupId", dependency.group)
-                                appendNode("artifactId", dependency.name)
-                                appendNode("version", dependency.version)
-                                appendNode("scope", "compile")
-                            }
-                        }
-                    }
+                    //removing RN dependencies like e.g. react-native-svg 
+                    //added by "from(components.getByName("default"))" to pom file
+                    val dependenciesNode = (asNode().get("dependencies") as groovy.util.NodeList).first() as groovy.util.Node
+                    dependenciesNode.children()
+                        .filterIsInstance<groovy.util.Node>()
+                        .filter { (it.get("groupId") as groovy.util.NodeList).text() == rootProject.name }
+                        .forEach { dependenciesNode.remove(it) }
                 }
             }
         }
@@ -92,27 +104,45 @@ tasks.register<Copy>("copyAutolinkingSources") {
     into("$moduleBuildDir/$autolinkingJavaSources")
 }
 
-tasks.register<Copy>("copyLibSources") {
-    dependsOn(":app:generateCodegenSchemaFromJavaScript")
-    dependsOn(":app:stripReleaseDebugSymbols")
-    dependsOn(":react-brownfield:generateCodegenSchemaFromJavaScript")
-    
-    from("${appBuildDir}/intermediates/stripped_native_libs/release/stripReleaseDebugSymbols/out/lib")
-    into("${rootProject.projectDir}/react-brownfield/libs")
+androidComponents {
+    onVariants { variant ->
+        val buildType = variant.buildType?.replaceFirstChar { it.titlecase() }
 
-    // Copy codegen SO lib files.
-    include("**/libappmodules.so", "**/libreact_codegen_*.so")
+        tasks.register<Copy>("copy${buildType}LibSources") {
+
+            dependsOn(":app:generateCodegenSchemaFromJavaScript")
+            dependsOn(":app:strip${buildType}DebugSymbols")
+
+            dependsOn(":react-brownfield:generateCodegenSchemaFromJavaScript")
+            from("${appBuildDir}/intermediates/stripped_native_libs/${buildType?.lowercase()}/strip${buildType}DebugSymbols/out/lib")
+            into("${rootProject.projectDir}/react-brownfield/libs${buildType}")
+
+            include("**/libappmodules.so", "**/libreact_codegen_*.so")
+        }
+
+        tasks.named("preBuild").configure {
+            dependsOn("copyAutolinkingSources")
+            dependsOn("copy${buildType}LibSources")
+            if (buildType == "Release") {
+                dependsOn(":app:createBundleReleaseJsAndAssets")
+            }
+        }
+    }
+}
+//removing RN dependencies like e.g. react-native-svg 
+//added by "from(components.getByName("default"))" to "module" file
+tasks.register("removeDependenciesFromModuleFile") {
+    doLast {
+        file("$moduleBuildDir/publications/react-brownfield/module.json").run {
+            val json = inputStream().use { JsonSlurper().parse(it) as Map<String, Any> }
+            (json["variants"] as? List<MutableMap<String, Any>>)?.forEach { variant ->
+                (variant["dependencies"] as? MutableList<Map<String, Any>>)?.removeAll { it["group"] == rootProject.name }
+            }
+            writer().use { it.write(JsonOutput.prettyPrint(JsonOutput.toJson(json))) }
+        }
+    }
 }
 
-tasks.named("preBuild").configure{
-    dependsOn("copyAutolinkingSources")
-    dependsOn("copyLibSources")
-    
-    val buildType = when {
-        gradle.startParameter.taskNames.any { it.contains("Release", ignoreCase = true) } -> "Release"
-        else -> "Debug"
-    }
-    if (buildType == "Release") {
-        dependsOn(":app:createBundleReleaseJsAndAssets")
-    }
+tasks.named("generateMetadataFileForReact-brownfieldPublication") {
+   finalizedBy("removeDependenciesFromModuleFile")
 }
