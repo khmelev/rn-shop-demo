@@ -46,13 +46,8 @@ pnpm brownfield:ios:release
 
 ## Android
 
-1. [TEMPORARY] In you `android/local.properties` file, add your GitHub credentials:
-```
-github_username=your_github_username
-github_token=your_github_token
-```
-2. Run `pnpm brownfield:android` to build the AAR file.
-3. In the NativeHost (`test-apps/android`), perform Gradle Sync to use the latest AAR file.
-4. Run the app from Android Studio.
-5. If you build the Debug variant, run `pnpm start` to start the Metro bundler.
+1. Run `pnpm brownfield:android` to build the AAR file.
+2. In the NativeHost (`test-apps/android`), perform Gradle Sync to use the latest AAR file.
+3. Run the app from Android Studio.
+4. If you build the Debug variant, run `pnpm start` to start the Metro bundler.
 
