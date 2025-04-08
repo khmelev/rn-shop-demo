@@ -17,10 +17,22 @@ val appProject = project(":app")
 val appBuildDir: Directory = appProject.layout.buildDirectory.get()
 val moduleBuildDir: Directory = layout.buildDirectory.get()
 val autolinkingJavaSources = "generated/autolinking/src/main/java"
+val hermesEnabled = project.hasProperty("hermesEnabled") && project.property("hermesEnabled") == "true"
 
 android {
     namespace = "com.callstack.react"
     compileSdk = 34
+
+    if (!hermesEnabled) {
+        packaging {
+            jniLibs {
+                excludes += "lib/x86/libjsctooling.so"
+                excludes += "lib/x86_64/libjsctooling.so"
+                excludes += "lib/armeabi-v7a/libjsctooling.so"
+                excludes += "lib/arm64-v8a/libjsctooling.so"
+            }
+        }
+    }
 
     defaultConfig {
         minSdk = 24
@@ -95,7 +107,11 @@ publishing {
 
 dependencies {
     api("com.facebook.react:react-android:0.78.0")
-    api("com.facebook.react:hermes-android:0.78.0")
+    if (hermesEnabled) {
+        api("com.facebook.react:hermes-android:0.78.0")
+    } else {
+        api("io.github.react-native-community:jsc-android:2026004.0.1")
+    }
 }
 
 tasks.register<Copy>("copyAutolinkingSources") {
