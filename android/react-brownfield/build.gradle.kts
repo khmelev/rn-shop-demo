@@ -13,10 +13,7 @@ repositories {
     mavenCentral()
 }
 
-val appProject = project(":app")
-val appBuildDir: Directory = appProject.layout.buildDirectory.get()
 val moduleBuildDir: Directory = layout.buildDirectory.get()
-val autolinkingJavaSources = "generated/autolinking/src/main/java"
 val hermesEnabled = project.hasProperty("hermesEnabled") && project.property("hermesEnabled") == "true"
 
 android {
@@ -48,20 +45,6 @@ android {
 
     kotlinOptions {
         jvmTarget = "17"
-    }
-
-    sourceSets {
-        getByName("main") {
-            assets.srcDirs("$appBuildDir/generated/assets/createBundleReleaseJsAndAssets")
-            res.srcDirs("$appBuildDir/generated/res/createBundleReleaseJsAndAssets")
-            java.srcDirs("$moduleBuildDir/$autolinkingJavaSources")
-        }
-        getByName("release") {
-            jniLibs.srcDirs("libsRelease")
-        }
-        getByName("debug") {
-            jniLibs.srcDirs("libsDebug")
-        }
     }
 
     publishing {
@@ -114,37 +97,6 @@ dependencies {
     }
 }
 
-tasks.register<Copy>("copyAutolinkingSources") {
-    dependsOn(":app:generateAutolinkingPackageList")
-    from("$appBuildDir/$autolinkingJavaSources")
-    into("$moduleBuildDir/$autolinkingJavaSources")
-}
-
-androidComponents {
-    onVariants { variant ->
-        val buildType = variant.buildType?.replaceFirstChar { it.titlecase() }
-
-        tasks.register<Copy>("copy${buildType}LibSources") {
-
-            dependsOn(":app:generateCodegenSchemaFromJavaScript")
-            dependsOn(":app:strip${buildType}DebugSymbols")
-
-            dependsOn(":react-brownfield:generateCodegenSchemaFromJavaScript")
-            from("${appBuildDir}/intermediates/stripped_native_libs/${buildType?.lowercase()}/strip${buildType}DebugSymbols/out/lib")
-            into("${rootProject.projectDir}/react-brownfield/libs${buildType}")
-
-            include("**/libappmodules.so", "**/libreact_codegen_*.so")
-        }
-
-        tasks.named("preBuild").configure {
-            dependsOn("copyAutolinkingSources")
-            dependsOn("copy${buildType}LibSources")
-            if (buildType == "Release") {
-                dependsOn(":app:createBundleReleaseJsAndAssets")
-            }
-        }
-    }
-}
 //removing RN dependencies like e.g. react-native-svg 
 //added by "from(components.getByName("default"))" to "module" file
 tasks.register("removeDependenciesFromModuleFile") {
