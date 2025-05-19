@@ -27,27 +27,27 @@ Follow these steps to build the app as `.xcframework`:
 
 1. Install dependencies 
 ```sh
-pnpm install
+yarn install
 ```
 2. Install pods
 ```sh
-pnpm pods
+yarn pods
 ```
 3. Build the app as framework
 ```sh
-pnpm brownfield:ios
+yarn brownfield:ios
 ```
 or 
 ```sh
-pnpm brownfield:ios:release
+yarn brownfield:ios:release
 ```
 
 `ReactBrownfield.xcframework` will be generated in `ios` directory
 
 ## Android
 
-1. Run `pnpm brownfield:android` to build the AAR file.
+1. Run `yarn brownfield:android` to build the AAR file.
 2. In the NativeHost (`test-apps/android`), perform Gradle Sync to use the latest AAR file.
 3. Run the app from Android Studio.
-4. If you build the Debug variant, run `pnpm start` to start the Metro bundler.
+4. If you build the Debug variant, run `yarn start` to start the Metro bundler.
 

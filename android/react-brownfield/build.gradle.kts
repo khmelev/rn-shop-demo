@@ -89,9 +89,9 @@ publishing {
 }
 
 dependencies {
-    api("com.facebook.react:react-android:0.78.0")
+    api("com.facebook.react:react-android:0.79.2")
     if (hermesEnabled) {
-        api("com.facebook.react:hermes-android:0.78.0")
+        api("com.facebook.react:hermes-android:0.79.2")
     } else {
         api("io.github.react-native-community:jsc-android:2026004.0.1")
     }
