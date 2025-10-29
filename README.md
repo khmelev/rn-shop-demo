@@ -1,53 +1,17 @@
-# Modern Brownfield Reference setup
+# React Native Demo Shop
 
-This repo showcases reference implementation of Callstack's modern brownfield approach using XCFramework/AAR integration of React Native into existing iOS and Android apps. 
+This is an educational project. I'm just learning React Native and trying to create a hybrid (native + react native) demo app.
 
-## Setup
+## How to build and run
 
-- The `main` branch contains RN new architecture enabled setup.
-- The `old-arch` branch contains RN old architecture setup. 
-
-## Adding new third party package support
-
-1. Start with RN old architecture setup (`old-arch` branch)
-2. Move to new architecture setup (`main` branch)
-
-## Supported things
-
-| Feature           | iOS     | Android |
-| ----------------- | ------- | ------- |
-| React Native      | 0.78    | 0.78    |
-| React Native arch | new+old | new+old |
-
-## Building
-
-### iOS Framework
-
-Follow these steps to build the app as `.xcframework`:
-
-1. Install dependencies 
+1. Install all libraries
 ```sh
-yarn install
+npm install
 ```
-2. Install pods
+2. Build AAR with React Native code
 ```sh
-yarn pods
+npm run brownfield:android
 ```
-3. Build the app as framework
-```sh
-yarn brownfield:ios
-```
-or 
-```sh
-yarn brownfield:ios:release
-```
-
-`ReactBrownfield.xcframework` will be generated in `ios` directory
-
-## Android
-
-1. Run `yarn brownfield:android` to build the AAR file.
-2. In the NativeHost (`test-apps/android`), perform Gradle Sync to use the latest AAR file.
-3. Run the app from Android Studio.
-4. If you build the Debug variant, run `yarn start` to start the Metro bundler.
-
+3. Build native android app
+- open `native-app/android` in Android Studio
+- press green button "Run app"
