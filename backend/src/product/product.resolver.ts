@@ -1,13 +1,26 @@
 import { Query, Resolver } from '@nestjs/graphql';
 
-import { Product } from './dto/product';
+import { Product, ProductList } from './dto/product';
 
 @Resolver(() => Product)
 export class ProductResolver {
-    @Query((returns) => Product)
+    @Query(() => Product)
     async product(): Promise<Product> {
         return {
             sku: "abc123"
+        }
+    }
+    @Query(() => ProductList)
+    async products(): Promise<ProductList> {
+        return {
+            products: [
+                {
+                    sku: "bcd123"
+                },
+                {
+                    sku: "cdf123"
+                }
+            ]
         }
     }
 }
