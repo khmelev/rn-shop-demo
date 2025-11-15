@@ -1,32 +1,19 @@
 import React from 'react';
 import {
-  ScrollView,
-  StatusBar,
   StyleSheet,
   useColorScheme,
-  View,
 } from 'react-native';
-import { Category } from './components/Category';
+import { RelayEnvironmentProvider, useLazyLoadQuery } from 'react-relay';
+import { RelayEnvironment } from './transport/RelayEnvironment';
+import { CategoryScreen } from './screens/CategoryScreen';
 
 function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const safePadding = '5%';
-
+  const isDarkMode = useColorScheme() === 'dark';  
   return (
-    <View>
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
-        <View
-          style={{
-            paddingHorizontal: safePadding,
-            paddingVertical: safePadding,
-          }}>
-          <Category category='Hello'></Category>
-          <Category category='World'></Category>
-          <Category category='!!!'></Category>
-        </View>
-      </ScrollView>
-    </View>
+    <RelayEnvironmentProvider environment={RelayEnvironment}>
+      <CategoryScreen>
+      </CategoryScreen>
+    </RelayEnvironmentProvider>
   );
 }
 

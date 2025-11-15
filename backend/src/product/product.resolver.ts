@@ -19,6 +19,9 @@ export class ProductResolver {
                 },
                 {
                     sku: "cdf123"
+                },
+                {
+                    sku: "456asd"
                 }
             ]
         }

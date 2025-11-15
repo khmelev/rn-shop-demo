@@ -1,0 +1,16 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Product {
+  sku: String!
+}
+
+type ProductList {
+  products: [Product!]!
+}
+
+type Query {
+  product: Product!
+  products: ProductList!
+}

@@ -8,7 +8,7 @@ import { ProductModule } from './product/product.module';
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: true,
+      autoSchemaFile: 'schema.gql',
       playground: false,
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
     }),
