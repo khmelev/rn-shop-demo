@@ -1,4 +1,4 @@
-import { ScrollView, View } from "react-native";
+import { SafeAreaView, ScrollView, View } from "react-native";
 import { Category } from "../components/Category";
 import { useLazyLoadQuery } from "react-relay";
 import { graphql } from "relay-runtime";
@@ -9,9 +9,10 @@ export function CategoryScreen(): React.JSX.Element {
 
     const myQuery = graphql`
         query CategoryScreenQuery {
-          products {
-            products {
-              sku
+          categories {
+            categories {
+              id
+              title
             }
           }
         }
@@ -19,18 +20,19 @@ export function CategoryScreen(): React.JSX.Element {
     const query = useLazyLoadQuery<CategoryScreenQuery>(myQuery, {});
 
     return (
+      <SafeAreaView>
         <ScrollView contentInsetAdjustmentBehavior="automatic">
             <View
                 style={{
                     paddingHorizontal: safePadding,
-                    paddingTop: safePadding,
-                    paddingBottom: '15%'
+                    paddingVertical: safePadding
                 }}>
-                {query.products.products.map(product => <Category key={product.sku} category={product.sku}></Category>)}
+                {query.categories.categories.map(category => <Category key={category.id} category={category.title}></Category>)}
                 <Category category='Hello'></Category>
                 <Category category='World'></Category>
-                <Category category='!!!5'></Category>
+                <Category category='!!!4'></Category>
             </View>
         </ScrollView>
+      </SafeAreaView>
     )
 }

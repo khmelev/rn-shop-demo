@@ -46,16 +46,6 @@
     "relay-compiler": "^20.1.1",
     "typescript": "5.0.4"
   },
-  "relay": {
-    "src": "./src",
-    "schema": "./backend/schema.gql",
-    "language": "typescript",
-    "exclude": [
-      "**/node_modules/**",
-      "**/__mocks__/**",
-      "**/__generated__/**"
-    ]
-  },
   "engines": {
     "node": ">=20"
   },

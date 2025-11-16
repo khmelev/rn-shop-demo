@@ -10,7 +10,17 @@ type ProductList {
   products: [Product!]!
 }
 
+type Category {
+  id: ID!
+  title: String!
+}
+
+type CategoryList {
+  categories: [Category!]!
+}
+
 type Query {
-  product: Product!
   products: ProductList!
+  categories: CategoryList!
+  category(id: ID!): Category!
 }

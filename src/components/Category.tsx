@@ -1,17 +1,23 @@
 import React, { PropsWithChildren } from 'react';
-import { View, Text, useColorScheme } from 'react-native';
+import { View, Text, useColorScheme, StyleSheet } from 'react-native';
 
-type CategoryProps = PropsWithChildren<{
+type Props = {
   category: string;
-}>;
+}
 
-export function Category({children, category}: CategoryProps): React.JSX.Element {
-    const isDarkMode = useColorScheme() === 'dark';
+export function Category({ category } : Props) {
     return (
         <View>
-          <Text>
+          <Text style={style.container}>
             {category}
           </Text>
         </View>
       );
 }
+
+const style = StyleSheet.create({
+  container: {
+    backgroundColor: '#ffccdd',
+    width: '50%',
+  }
+})
