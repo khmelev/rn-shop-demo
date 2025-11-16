@@ -2,14 +2,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Product {
-  sku: String!
-}
-
-type ProductList {
-  products: [Product!]!
-}
-
 type Category {
   id: ID!
   title: String!
@@ -19,8 +11,20 @@ type CategoryList {
   categories: [Category!]!
 }
 
+type Product {
+  sku: String!
+  name: String!
+  category: Category!
+}
+
+type ProductList {
+  products: [Product!]!
+}
+
 type Query {
-  products: ProductList!
   categories: CategoryList!
   category(id: ID!): Category!
+  products: ProductList!
+  productsWithCategory(categoryId: String!): ProductList!
+  findBySku(sku: String!): Product!
 }

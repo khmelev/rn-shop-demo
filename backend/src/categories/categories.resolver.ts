@@ -2,8 +2,6 @@ import { Args, ID, Query, Resolver } from '@nestjs/graphql';
 import { Category, CategoryList } from './dto/category';
 import { CategoriesService } from './categories.service';
 
-type NullableCategory = Category | undefined
-
 @Resolver(() => Category)
 export class CategoriesResolver {
     constructor(

@@ -1,23 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { Category } from './dto/category';
-import {v4 as uuidv4} from 'uuid';
+import { mockCategories } from 'src/mocks';
 
 @Injectable()
 export class CategoriesService {
-    private categories: Category[] = [
-        {
-            id: uuidv4(),
-            title: 'Category 1'
-        },
-        {
-            id: uuidv4(),
-            title: 'Category 2'
-        },
-        {
-            id: uuidv4(),
-            title: 'Category 3'
-        }
-    ]
+    private categories: Category[] = mockCategories
 
     all(): Category[] {
         return this.categories
