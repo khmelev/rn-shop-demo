@@ -6,13 +6,35 @@ import {
 import { RelayEnvironmentProvider, useLazyLoadQuery } from 'react-relay';
 import { RelayEnvironment } from './transport/RelayEnvironment';
 import { CategoryScreen } from './screens/CategoryScreen';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { CatalogScreen } from './screens/CatalogScreen';
 
-function App(): React.JSX.Element {
+export type StackParamList={
+  Categories: undefined;
+  Catalog: undefined;
+}
+
+const Stack = createNativeStackNavigator<StackParamList>()
+
+const App: React.FC = () => {
   const isDarkMode = useColorScheme() === 'dark';  
   return (
     <RelayEnvironmentProvider environment={RelayEnvironment}>
-      <CategoryScreen>
-      </CategoryScreen>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName='Categories'>
+          <Stack.Screen
+            name='Categories'
+            component={CategoryScreen}
+            options={{headerShown: true}}
+          />
+          <Stack.Screen
+            name='Catalog'
+            component={CatalogScreen}
+            options={{headerShown: true}}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
     </RelayEnvironmentProvider>
   );
 }
