@@ -5,8 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
-import com.callstack.react.RNViewFactory
-import com.callstack.react.RootComponent
+import com.callstack.react.ReactNativeBrownfield
 
 class ReactNativeFragment : Fragment() {
     override fun onCreateView(
@@ -14,6 +13,10 @@ class ReactNativeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): FrameLayout {
-        return RNViewFactory.createFrameLayout(requireContext(), requireActivity(), RootComponent.Main)
+
+        return ReactNativeBrownfield.shared.createView(
+            activity = requireActivity(),
+            moduleName = "main"
+        )
     }
 }

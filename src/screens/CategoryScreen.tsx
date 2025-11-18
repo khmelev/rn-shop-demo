@@ -39,7 +39,7 @@ export const CategoryScreen: FC<NativeStackScreenProps<StackParamList, 'Categori
                 <Text onPress={openCatalog}>Hello</Text>
                 <Category category='Hello'></Category>
                 <Category category='World'></Category>
-                <Category category='!!!7'></Category>
+                <Category category='!!!8'></Category>
             </View>
         </ScrollView>
       </SafeAreaView>

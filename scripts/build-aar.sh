@@ -8,7 +8,7 @@ trap 'echo "Build interrupted"; exit 1' INT
 pushd android
 ./gradlew clean
 ./gradlew react-brownfield:bundleReleaseAar
-./gradlew react-brownfield:bundleDebugAar
+# ./gradlew react-brownfield:bundleDebugAar
 
 echo -e "✅ AARs built successfully: \n android/react-brownfield/build/outputs/aar/react-brownfield-debug.arr \n android/react-brownfield/build/outputs/aar/react-brownfield-release.arr"
 

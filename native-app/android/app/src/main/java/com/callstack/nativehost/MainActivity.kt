@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.callstack.nativehost.databinding.ActivityMainBinding
-import com.callstack.react.RNBridgeManager
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler
 
 class MainActivity : AppCompatActivity(), DefaultHardwareBackBtnHandler {
@@ -15,8 +14,6 @@ class MainActivity : AppCompatActivity(), DefaultHardwareBackBtnHandler {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        RNBridgeManager.shared.initializeReactApp(this.application)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
