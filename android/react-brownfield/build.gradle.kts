@@ -36,6 +36,7 @@ android {
 
         buildConfigField("boolean", "IS_NEW_ARCHITECTURE_ENABLED", properties["newArchEnabled"].toString())
         buildConfigField("boolean", "IS_HERMES_ENABLED", properties["hermesEnabled"].toString())
+        buildConfigField("boolean", "IS_EDGE_TO_EDGE_ENABLED", "false")
     }
 
     compileOptions {
@@ -89,9 +90,9 @@ publishing {
 }
 
 dependencies {
-    api("com.facebook.react:react-android:0.79.2")
+    api("com.facebook.react:react-android:0.82.1")
     if (hermesEnabled) {
-        api("com.facebook.react:hermes-android:0.79.2")
+        api("com.facebook.react:hermes-android:0.82.1")
     } else {
         api("io.github.react-native-community:jsc-android:2026004.0.1")
     }

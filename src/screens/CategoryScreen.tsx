@@ -1,4 +1,4 @@
-import { SafeAreaView, ScrollView, Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import { Category } from "../components/Category";
 import { useLazyLoadQuery } from "react-relay";
 import { graphql } from "relay-runtime";
@@ -6,6 +6,7 @@ import { CategoryScreenQuery } from "./__generated__/CategoryScreenQuery.graphql
 import { FC } from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackParamList } from "../App";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export const CategoryScreen: FC<NativeStackScreenProps<StackParamList, 'Categories'>> = ({navigation}) => {
     const safePadding = '5%';
@@ -38,7 +39,7 @@ export const CategoryScreen: FC<NativeStackScreenProps<StackParamList, 'Categori
                 <Text onPress={openCatalog}>Hello</Text>
                 <Category category='Hello'></Category>
                 <Category category='World'></Category>
-                <Category category='!!!5'></Category>
+                <Category category='!!!7'></Category>
             </View>
         </ScrollView>
       </SafeAreaView>
