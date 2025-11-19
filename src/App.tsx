@@ -10,12 +10,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { CatalogScreen } from './screens/CatalogScreen';
 
-export type StackParamList={
+export type RootStackParamList={
   Categories: undefined;
-  Catalog: undefined;
+  Catalog: {
+    category: string | undefined
+  };
 }
 
-const Stack = createNativeStackNavigator<StackParamList>()
+const Stack = createNativeStackNavigator<RootStackParamList>()
 
 const App: React.FC = () => {
   const isDarkMode = useColorScheme() === 'dark';  

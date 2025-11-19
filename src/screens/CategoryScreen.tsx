@@ -5,17 +5,13 @@ import { graphql } from "relay-runtime";
 import { CategoryScreenQuery } from "./__generated__/CategoryScreenQuery.graphql";
 import { FC } from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { StackParamList } from "../App";
+import { RootStackParamList } from "../App";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export const CategoryScreen: FC<NativeStackScreenProps<StackParamList, 'Categories'>> = ({navigation}) => {
-    const safePadding = '5%';
+export const CategoryScreen: FC<NativeStackScreenProps<RootStackParamList, 'Categories'>> = ({ navigation }) => {
+  const safePadding = '5%';
 
-    const openCatalog = () => {
-      navigation.navigate('Catalog')
-    }
-
-    const myQuery = graphql`
+  const myQuery = graphql`
         query CategoryScreenQuery {
           categories {
             categories {
@@ -25,23 +21,31 @@ export const CategoryScreen: FC<NativeStackScreenProps<StackParamList, 'Categori
           }
         }
       `;
-    const query = useLazyLoadQuery<CategoryScreenQuery>(myQuery, {});
+  const query = useLazyLoadQuery<CategoryScreenQuery>(myQuery, {});
 
-    return (
-      <SafeAreaView>
-        <ScrollView contentInsetAdjustmentBehavior="automatic">
-            <View
-                style={{
-                    paddingHorizontal: safePadding,
-                    paddingVertical: safePadding
-                }}>
-                {query.categories.categories.map(category => <Category key={category.id} category={category.title}></Category>)}
-                <Text onPress={openCatalog}>Hello</Text>
-                <Category category='Hello'></Category>
-                <Category category='World'></Category>
-                <Category category='!!!8'></Category>
-            </View>
-        </ScrollView>
-      </SafeAreaView>
-    )
+  const openCatalog = (category: string) => {
+    navigation.navigate('Catalog', { category: category })
+  }
+
+  return (
+    <SafeAreaView>
+      <ScrollView contentInsetAdjustmentBehavior="automatic">
+        <View
+          style={{
+            paddingHorizontal: safePadding,
+            paddingVertical: safePadding
+          }}>
+          {query.categories.categories.map(category =>
+            <Category
+              key={category.id}
+              category={category.title}
+              onPress={() => openCatalog(category.title)}
+              >
+            </Category>)
+          }
+          <Category category='Hello World!5'></Category>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  )
 }
