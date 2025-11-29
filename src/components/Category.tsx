@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { html, css } from 'react-strict-dom';
 
 type Props = {
   category: string;
@@ -12,6 +13,7 @@ export function Category({ category,  onPress } : Props) {
           <Text style={style.container} onPress={onPress}>
             {category}
           </Text>
+          <html.p style={strictStyle.button} onClick={onPress}>{category}</html.p>
         </View>
       );
 }
@@ -19,6 +21,13 @@ export function Category({ category,  onPress } : Props) {
 const style = StyleSheet.create({
   container: {
     backgroundColor: '#ffccdd',
+    width: '50%',
+  }
+})
+
+const strictStyle = css.create({
+  button: {
+    backgroundColor: '#ffaaee',
     width: '50%',
   }
 })

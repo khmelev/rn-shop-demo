@@ -43,7 +43,7 @@ export const CategoryScreen: FC<NativeStackScreenProps<RootStackParamList, 'Cate
               >
             </Category>)
           }
-          <Category category='Hello World!5'></Category>
+          <Category category='Hello World!6'></Category>
         </View>
       </ScrollView>
     </SafeAreaView>
