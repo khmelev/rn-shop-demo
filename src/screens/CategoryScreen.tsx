@@ -7,6 +7,7 @@ import { FC } from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../App";
 import { SafeAreaView } from "react-native-safe-area-context";
+import NativeShop from "../specs/NativeShop";
 
 export const CategoryScreen: FC<NativeStackScreenProps<RootStackParamList, 'Categories'>> = ({ navigation }) => {
   const safePadding = '5%';
@@ -43,7 +44,7 @@ export const CategoryScreen: FC<NativeStackScreenProps<RootStackParamList, 'Cate
               >
             </Category>)
           }
-          <Category category='Hello World!6'></Category>
+          <Category category={NativeShop.getItem('sdf') ?? 'Category 6'}></Category>
         </View>
       </ScrollView>
     </SafeAreaView>

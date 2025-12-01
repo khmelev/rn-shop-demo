@@ -11,7 +11,7 @@ class MainApplication : Application() {
         super.onCreate()
         loadReactNative(this)
 
-        val packages = PackageList(this).packages
+        val packages = PackageList(this).packages + NativeShopPackage()
         ReactNativeBrownfield.initialize(this, packages) {
             Log.d("test", "test")
         }
